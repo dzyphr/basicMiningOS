@@ -1,0 +1,14 @@
+autoinstall:
+  version: 1
+  identity:
+    hostname: ubuntu-desktop
+    username: local-optimum
+    password: "password"
+  storage:
+    layout:
+      name: lvm
+  packages:
+    - vim
+    - git
+  late-commands:
+    - curtin in-target -- apt update
