@@ -7,19 +7,7 @@ autoinstall:
     password: "password"
   storage:
     layout:
-      name: direct
-    disks:
-      - device: /dev/sda
-        wipes: superblock
-        partitions:
-          - size: 20480
-            type: primary
-            filesystem: ext4
-            mount_point: /
-          - size: 10240
-            type: primary
-            filesystem: ext4
-            mount_point: /home
+      name: lvm
   packages:
     - vim
     - git
