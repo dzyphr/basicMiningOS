@@ -1,14 +1,16 @@
+#cloud-config
 autoinstall:
   version: 1
   identity:
     hostname: ubuntu-desktop
-    username: local-optimum
+    username: localminer
     password: "password"
   storage:
     layout:
-      name: lvm
+      name: direct
   packages:
     - vim
     - git
   late-commands:
     - curtin in-target -- apt update
+

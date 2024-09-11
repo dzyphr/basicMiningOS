@@ -1,2 +1,2 @@
-ubuntu-24.04.1-desktop-amd64.iso
-balena-etcher_1.19.21_amd64.deb
+ubuntu-*.iso
+balena-etcher*.deb
