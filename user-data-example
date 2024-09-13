@@ -2,56 +2,25 @@
 autoinstall:
   version: 1
   updates: security
-  #interactive-sections:  # Install groups listed here will wait for user input
-   #- storage
   storage:  # This should set the interactive (lvm set) default
     layout:
       name: lvm
       match:
-        size: largest  
+        size: largest # this chooses largest disk, look into way to choose current disk? 
   locale: en_US.UTF-8
+  timezone: America/Chicago
   keyboard:
     layout: us
   identity:
     hostname: basicminingOS
     password: $y$j9T$2wPoeBEAuoSYZ5A7Fy1iv1$wIZdReKj8B.yUEXiAZ0q2UO/itXDiJxfOK15Yq/.Ee6 #password 
     username: miner
-  apt:
-    disable_components: []
-    geoip: true
-    preserve_sources_list: false
-    primary:
-    - arches:
-      - amd64
-      - i386
-      uri: http://us.archive.ubuntu.com/ubuntu
-    - arches:
-      - default
-      uri: http://ports.ubuntu.com/ubuntu-ports
-  drivers:
-    install: true
   ssh:
     allow-pw: true
     install-server: true
-  network:
-    version: 2
-    wifis:
-      wlan0:
-        access-points:
-          "":
-  apt:
-    primary:
-      - arches: [default]
-        uri: http://us.archive.ubuntu.com/ubuntu/
-    sources:     # Example for adding a ppa source
-      ignored1:  # This is here to get the yaml formatting right when adding a ppa
-        source: ppa:graphics-drivers/ppa
-  packages: 
-    - network-manager
-    - build-essential
-    - vim
-    - ubuntu-desktop-minimal  
-  package_update: true
-  package_upgrade: true
-  #late-commands:
+#  packages: #will only work w ethernet prolly atm, for now its offline install only
+#    - dkms
+#    - vim
+#    - ubuntu-desktop-minimal  
+#    - git
  

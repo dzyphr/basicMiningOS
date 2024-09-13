@@ -42,9 +42,13 @@ mkdir "source-files" #make source files dir
 wget -nc https://cdimage.ubuntu.com/ubuntu-server/jammy/daily-live/current/jammy-live-server-amd64.iso #get ubuntu 22.04 server
 
 7z -y x jammy-live-server-amd64.iso -osource-files #extract to source-files dir
+#wget -nc https://www.releases.ubuntu.com/22.04/ubuntu-22.04.5-desktop-amd64.iso
+
+#7z -y x ubuntu-22.04.5-desktop-amd64.iso
 
 cd source-files #go to source-files dir
 
+#rm '[BOOT]' #just remove them?
 mv  '[BOOT]' ../BOOT #move raw boot images out of the way
 #(
 #   reference: 
