@@ -13,22 +13,6 @@ sudo apt install wget #download stuff
 
 sudo apt install xorriso #mod ISO files
 
-read -p "Do you want to configure wifi access points for the intended hardware this ISO will be installed on? (y/n): " response
-
-# Convert the response to lowercase to handle different cases
-response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
-
-# Check the response and act accordingly
-if [[ "$response" == "y" || "$response" == "yes" ]]; then
-    echo "Running Wifi config script"
-    ./setupWifi.sh
-    # Place the commands to execute when 'yes' is chosen here
-elif [[ "$response" == "n" || "$response" == "no" ]]; then
-    echo "Leaving Wifi unconfigured, make sure hardware that is installing this ISO will have an Ethernet connection"
-    # Place the commands to execute when 'no' is chosen here
-else
-    echo "Invalid response. Please enter 'y' or 'n'."
-fi
 
 ISONAME='basicminingOS-u22.04-ISO' #set ISO file 
 ISODIRNAME=$ISONAME"_BUILDDIR"
@@ -42,13 +26,9 @@ mkdir "source-files" #make source files dir
 wget -nc https://cdimage.ubuntu.com/ubuntu-server/jammy/daily-live/current/jammy-live-server-amd64.iso #get ubuntu 22.04 server
 
 7z -y x jammy-live-server-amd64.iso -osource-files #extract to source-files dir
-#wget -nc https://www.releases.ubuntu.com/22.04/ubuntu-22.04.5-desktop-amd64.iso
-
-#7z -y x ubuntu-22.04.5-desktop-amd64.iso
 
 cd source-files #go to source-files dir
 
-#rm '[BOOT]' #just remove them?
 mv  '[BOOT]' ../BOOT #move raw boot images out of the way
 #(
 #   reference: 
