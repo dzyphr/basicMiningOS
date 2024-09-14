@@ -31,9 +31,8 @@ cd source-files #go to source-files dir
 
 mkdir customOS_scripts
 
-cp ../../wifi.sh customOS_scripts/wifi.sh
-cp ../../disableCloudNetConfig.sh customOS_scripts/disableCloudNetConfig.sh
-
+cp ../../*.sh customOS_scripts/
+rm customOS_scripts/buildAndEtch.sh
 
 mv  '[BOOT]' ../BOOT #move raw boot images out of the way
 #(
