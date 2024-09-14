@@ -18,6 +18,30 @@ autoinstall:
   ssh:
     allow-pw: true
     install-server: true
+  late-commands: 
+    - cp /cdrom/customOS_scripts/wifi.sh /target/usr/bin/wifi
+    - cp /cdrom/customOS_scripts/disableCloudNetConfig.sh /target/usr/bin/disableCloudNetConfig.sh
+    - cp /cdrom/customOS_scripts/basics.sh /target/usr/bin/basics
+    - cp /cdrom/customOS_scripts/DNS.sh /target/usr/bin/DNS
+    - cp /cdrom/customOS_scripts/shortenNetBootHang.sh /target/usr/bin/shortenNetBootHang
+    - cp /cdrom/customOS_scripts/setNvidiaGPUPowerLimit.sh /target/usr/bin/setNvidiaGPUPowerLimit
+    - cp /cdrom/customOS_scripts/nvidiaPack.sh /target/usr/bin/nvidiaPack
+    - cp /cdrom/customOS_scripts/nvidia-smi-persistence.sh /target/usr/bin/nvidia-smi-persistence
+    - cp /cdrom/customOS_scripts/lockNvidiaGPUCoreClock.sh /target/usr/bin/lockNvidiaGPUCoreClock
+    - cp /cdrom/customOS_scripts/lockNvidiaGPUMemClock.sh /target/usr/bin/lockNvidiaGPUMemClock
+    - cp /cdrom/customOS_scripts/nvidiaMemOffset.sh /target/usr/bin/nvidiaMemOffset
+    - chmod +x /target/usr/bin/wifi
+    - chmod +x /target/usr/bin/disableCloudNetConfig.sh
+    - chmod +x /target/usr/bin/basics
+    - chmod +x /target/usr/bin/DNS
+    - chmod +x /target/usr/bin/shortenNetBootHang
+    - chmod +x /target/usr/bin/setNvidiaGPUPowerLimit
+    - chmod +x /target/usr/bin/nvidiaPack
+    - chmod +x /target/usr/bin/nvidia-smi-persistence
+    - chmod +x /target/usr/bin/lockNvidiaGPUCoreClock
+    - chmod +x /target/usr/bin/lockNvidiaGPUMemClock
+    - chmod +x /target/usr/bin/nvidiaMemOffset
+
 #  packages: #will only work w ethernet prolly atm, for now its offline install only
 #    - dkms
 #    - vim

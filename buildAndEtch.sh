@@ -29,6 +29,12 @@ wget -nc https://cdimage.ubuntu.com/ubuntu-server/jammy/daily-live/current/jammy
 
 cd source-files #go to source-files dir
 
+mkdir customOS_scripts
+
+cp ../../wifi.sh customOS_scripts/wifi.sh
+cp ../../disableCloudNetConfig.sh customOS_scripts/disableCloudNetConfig.sh
+
+
 mv  '[BOOT]' ../BOOT #move raw boot images out of the way
 #(
 #   reference: 
