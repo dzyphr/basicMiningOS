@@ -1,0 +1,2 @@
+Having more than one device AKA GPU in /etx/X11/xorg.conf seems to cause an error where the login screen does not display, even though 
+the system otherwise boots normally, this happens while setting coolbits with this command: `sudo nvidia-xconfig -a --cool-bits=16 --allow-empty-initial-configuration`
