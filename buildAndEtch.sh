@@ -30,9 +30,12 @@ wget -nc https://cdimage.ubuntu.com/ubuntu-server/jammy/daily-live/current/jammy
 cd source-files #go to source-files dir
 
 mkdir customOS_scripts
-
 cp ../../*.sh customOS_scripts/
 rm customOS_scripts/buildAndEtch.sh
+rm customOS_scripts/scp.sh
+
+mkdir customOS_userConfigJSONs
+cp ../../*.json customOS_userConfigJSONs/
 
 mv  '[BOOT]' ../BOOT #move raw boot images out of the way
 #(

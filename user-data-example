@@ -33,6 +33,8 @@ autoinstall:
     - cp /cdrom/customOS_scripts/nmap.sh /target/usr/bin/nmap.sh
     - cp /cdrom/customOS_scripts/setCoolbits16.sh /target/usr/bin/setCoolbits16
     - cp /cdrom/customOS_scripts/ssh.sh /target/usr/bin/ssh.sh
+    - cp /cdrom/customOS_userConfigJSONs/CoinOptions.json /target/usr/bin/CoinOptions.json
+    - cp /cdrom/customOS_userConfigJSONs/NvidiaMiners.json /target/usr/bin/NvidiaMiners.json
     - chmod +x /target/usr/bin/wifi
     - chmod +x /target/usr/bin/disableCloudNetConfig.sh
     - chmod +x /target/usr/bin/basics
