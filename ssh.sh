@@ -1,6 +1,6 @@
 if [ $# -eq 1 ]; then
     IPADDRESS=$1
-    ssh miner@$IPADDRESS
+    ssh -X miner@$IPADDRESS
 else
     echo "provide arguments: 
     ssh.sh <IP ADDRESS>
