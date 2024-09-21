@@ -30,11 +30,11 @@ autoinstall:
     - cp /cdrom/customOS_scripts/lockNvidiaGPUCoreClock.sh /target/usr/bin/lockNvidiaGPUCoreClock
     - cp /cdrom/customOS_scripts/lockNvidiaGPUMemClock.sh /target/usr/bin/lockNvidiaGPUMemClock
     - cp /cdrom/customOS_scripts/nvidiaMemOffset.sh /target/usr/bin/nvidiaMemOffset
-    - cp /cdrom/customOS_scripts/nmap.sh /target/usr/bin/nmap.sh
-    - cp /cdrom/customOS_scripts/setCoolbits16.sh /target/usr/bin/setCoolbits16
-    - cp /cdrom/customOS_scripts/ssh.sh /target/usr/bin/ssh.sh
+    - cp /cdrom/customOS_scripts/setCoolbits28.sh /target/usr/bin/setCoolbits28
     - cp /cdrom/customOS_userConfigJSONs/CoinOptions.json /target/usr/bin/CoinOptions.json
     - cp /cdrom/customOS_userConfigJSONs/NvidiaMiners.json /target/usr/bin/NvidiaMiners.json
+    - cp /cdrom/customOS_scripts/NvidiaMemUsage.sh /target/usr/bin/NvidiaMemUsage
+    - cp /cdrom/customOS_scripts/remote-nvidia-settings.sh /target/usr/bin/remote-nvidia-settings
     - chmod +x /target/usr/bin/wifi
     - chmod +x /target/usr/bin/disableCloudNetConfig.sh
     - chmod +x /target/usr/bin/basics
@@ -46,9 +46,9 @@ autoinstall:
     - chmod +x /target/usr/bin/lockNvidiaGPUCoreClock
     - chmod +x /target/usr/bin/lockNvidiaGPUMemClock
     - chmod +x /target/usr/bin/nvidiaMemOffset
-    - chmod +x /target/usr/bin/nmap.sh
     - chmod +x /target/usr/bin/setCoolbits16
-    - chmod +x /target/usr/bin/ssh.sh
+    - chmod +x /target/usr/bin/NvidiaMemUsage
+    - chmod +x /target/usr/bin/remote-nvidia-settings
 
 #  packages: #will only work w ethernet prolly atm, for now its offline install only
 #    - dkms

@@ -58,11 +58,15 @@ mineroption=$(fzfFromJSONChoices "$NvidiaMinerOptionsJSON")
 if [ "$mineroption" = "gminer" ]; then
     wget -nc https://github.com/develsoftware/GMinerRelease/releases/download/3.44/gminer_3_44_linux64.tar.xz
     mkdir -p "$mineroption"
-    tar -xvf gminer_3_44_linux64.tar.xz -C gminer #TODO modularize miner choice further
+    tar -xvf gminer_3_44_linux64.tar.xz -C "$mineroption" #TODO modularize miner choice further
 elif [ "$mineroption" = "trex" ]; then
     wget -nc https://github.com/trexminer/T-Rex/releases/download/0.26.8/t-rex-0.26.8-linux.tar.gz
     mkdir -p "$mineroption"
-    tar -xvzf t-rex-0.26.8-linux.tar.gz -C trex
+    tar -xvzf t-rex-0.26.8-linux.tar.gz -C "$mineroption"
+elif [ "$mineroption" = "rigel" ]; then
+    wget -nc https://github.com/rigelminer/rigel/releases/download/1.19.1/rigel-1.19.1-linux.tar.gz
+    mkdir -p "$mineroption"
+    tar -xvzf rigel-1.19.1-linux.tar.gz -C "$mineroption"
 else
     echo "Miner: $mineroption is currently unhandled! Needs configuration."
 fi
@@ -122,9 +126,12 @@ if [ "$coinoption" = "Ergo" ]; then
 
     cd "$mineroption" || return
     if [ "$mineroption" = "gminer" ]; then
-        ./miner --algo autolykos2 --server "$miningpooladdr" --user "$ergoaddr"
+        sudo ./miner --algo autolykos2 --server "$miningpooladdr" --user "$ergoaddr"
     elif [ "$mineroption" = "trex" ]; then
-        ./t-rex -a autolykos2 -o "$miningpooladdr" -u "$ergoaddr"
+        sudo ./t-rex -a autolykos2 -o "$miningpooladdr" -u "$ergoaddr"
+    elif [ "$mineroption" = "rigel" ]; then
+        cd "rigel-1.19.1-linux"
+        sudo ./rigel -a autolykos2 -o stratum+tcp://"$miningpooladdr" -u "$ergoaddr"
     fi
 else
     echo "Coin: $coinoption is currently unhandled! Needs configuration."
