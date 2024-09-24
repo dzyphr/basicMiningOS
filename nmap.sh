@@ -1,6 +1,6 @@
 if [ $# -eq 1 ]; then
     IPADDRESS=$1
-    nmap   -T 5 -R $IPADDRESS
+    nmap   -T 5 -R $IPADDRESS --system-dns
 else
     echo "provide arguments: 
     nmap.sh <IP ADDRESS>
