@@ -75,24 +75,32 @@ def parse_nvidia_smi_output(output):
                 if is_valid_timestamp(line) == False:
                     if is_label_line(line) == False:
                         filteredString += f'{line}\n'.replace('|', '')
+    print(filteredString)
+    index = 0
     for line in filteredString.splitlines():
         linearray = re.sub(r'\s\s+', '-', line).split('-')
-        GPU_IDNO = linearray[1]
-        print(f"GPU ID NUMBER: {GPU_IDNO}")
-        GPU_NAME = linearray[2]
-        print(f"GPU NAME: {GPU_NAME}")
-        GPU_HWID = linearray[4].replace("Off", "").replace("On", "")
-        print(f"GPU HARDWARE ID: {GPU_HWID}")
-        GPU_Sub = getGPUSubsystem(GPU_HWID)
-        gpus[GPU_IDNO] = {
-                "Name": GPU_NAME,
-                "HWID": GPU_HWID,
-                "Subsystem": GPU_Sub
-        }
+        if len(linearray) == 6:
+            GPU_UUID = os.popen(f'nvidia-smi --query-gpu=uuid -i {index} --format=csv').read().replace("uuid\n", "").replace("\n", "")
+            #print(linearray)
+            GPU_IDNO = linearray[1]
+            print(f"GPU ID NUMBER: {GPU_IDNO}")
+            GPU_NAME = linearray[2]
+            print(f"GPU NAME: {GPU_NAME}")
+            GPU_HWID = linearray[4].replace("Off", "").replace("On", "")
+            print(f"GPU HARDWARE ID: {GPU_HWID}")
+            GPU_Sub = getGPUSubsystem(GPU_HWID)
+            gpus[GPU_IDNO] = {
+                    "Name": GPU_NAME,
+                    "HWID": GPU_HWID,
+                    "Subsystem": GPU_Sub,
+                    "UUID": GPU_UUID
+            }
+            index += 1
     return json.dumps(gpus, indent=2)
 
 
-    
-
 file_tools.clean_file_open("NvidiaGPUs.json", "w", parse_nvidia_smi_output(nvidia_smi_output()))
+
+
+
 
