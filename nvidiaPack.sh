@@ -67,6 +67,14 @@ elif [ "$mineroption" = "rigel" ]; then
     wget -nc https://github.com/rigelminer/rigel/releases/download/1.19.1/rigel-1.19.1-linux.tar.gz
     mkdir -p "$mineroption"
     tar -xvzf rigel-1.19.1-linux.tar.gz -C "$mineroption"
+elif [ "$mineroption" = "SRBMulti" ]; then
+    wget -nc https://github.com/doktor83/SRBMiner-Multi/releases/download/2.6.6/SRBMiner-Multi-2-6-6-Linux.tar.gz
+    mkdir -p "$mineroption"
+    tar -xvzf SRBMiner-Multi-2-6-6-Linux.tar.gz -C "$mineroption"
+elif [ "$mineroption" = "nanominer" ]; then
+    wget -nc https://github.com/nanopool/nanominer/releases/download/v3.9.2/nanominer-linux-3.9.2.tar.gz
+    mkdir -p "$mineroption"
+    tar -xvzf nanominer-linux-3.9.2.tar.gz -C "$mineroption"
 else
     echo "Miner: $mineroption is currently unhandled! Needs configuration."
 fi
@@ -130,8 +138,19 @@ if [ "$coinoption" = "Ergo" ]; then
     elif [ "$mineroption" = "trex" ]; then
         sudo ./t-rex -a autolykos2 -o "$miningpooladdr" -u "$ergoaddr"
     elif [ "$mineroption" = "rigel" ]; then
-        cd "rigel-1.19.1-linux"
-        sudo ./rigel -a autolykos2 -o stratum+tcp://"$miningpooladdr" -u "$ergoaddr"
+	cd "rigel-1.19.1-linux"
+	sudo ./rigel -a autolykos2 -o stratum+tcp://"$miningpooladdr" -u "$ergoaddr"
+    elif [ "$mineroption" = "SRBMulti" ]; then
+	cd "SRBMiner-Multi-2-6-6"
+	sudo ./SRBMiner-MULTI -a autolykos2 -o "$miningpooladdr" -u "$ergoaddr" #devices not found
+    elif [ "$mineroption" = "nanominer" ]; then
+	echo "
+pool1="$miningpooladdr"
+wallet="$ergoaddr"
+coin=ergo" > config.ini
+	sudo ./nanominer config.ini
+#	sudo ./nanominer -algo autolykos2 -pool "$miningpooladdr" -wallet "$ergoaddr"
+
     fi
 else
     echo "Coin: $coinoption is currently unhandled! Needs configuration."
