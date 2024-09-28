@@ -75,6 +75,10 @@ elif [ "$mineroption" = "nanominer" ]; then
     wget -nc https://github.com/nanopool/nanominer/releases/download/v3.9.2/nanominer-linux-3.9.2.tar.gz
     mkdir -p "$mineroption"
     tar -xvzf nanominer-linux-3.9.2.tar.gz -C "$mineroption"
+elif [ "$mineroption" = "lolminer" ]; then
+    wget -nc https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.91/lolMiner_v1.91_Lin64.tar.gz
+    mkdir -p "$mineroption"
+    tar -xvzf lolMiner_v1.91_Lin64.tar.gz -C "$mineroption"
 else
     echo "Miner: $mineroption is currently unhandled! Needs configuration."
 fi
@@ -149,8 +153,9 @@ pool1="$miningpooladdr"
 wallet="$ergoaddr"
 coin=ergo" > config.ini
 	sudo ./nanominer config.ini
-#	sudo ./nanominer -algo autolykos2 -pool "$miningpooladdr" -wallet "$ergoaddr"
-
+    elif [ "$mineroption" = "lolminer" ]; then
+	cd "1.91"
+	./lolMiner --algo AUTOLYKOS2 --pool "$miningpooladdr" --user "$ergoaddr"
     fi
 else
     echo "Coin: $coinoption is currently unhandled! Needs configuration."
