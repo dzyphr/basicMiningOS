@@ -35,6 +35,7 @@ autoinstall:
     - cp /cdrom/customOS_userConfigJSONs/NvidiaMiners.json /target/usr/bin/NvidiaMiners.json
     - cp /cdrom/customOS_scripts/NvidiaMemUsage.sh /target/usr/bin/NvidiaMemUsage
     - cp /cdrom/customOS_scripts/remote-nvidia-settings.sh /target/usr/bin/remote-nvidia-settings
+    - cp -r /cdrom/customOS_scripts/basicMiningPython/ /target/usr/bin/basicMiningPython/
     - chmod +x /target/usr/bin/wifi
     - chmod +x /target/usr/bin/disableCloudNetConfig.sh
     - chmod +x /target/usr/bin/basics

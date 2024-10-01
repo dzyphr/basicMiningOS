@@ -1,9 +1,9 @@
 {
-    "nvidiaminers":[
-            {
-                "gminer": "gminer",
-                "trex": "trex"
-                "rigel": "rigel"
-            }
-        ]
+    "nvidiaminers":[{
+        "gminer": "gminer",
+        "trex": "trex",
+        "rigel": "rigel",
+        "nanominer": "nanominer",
+        "lolminer": "lolminer"   
+    }]
 }
